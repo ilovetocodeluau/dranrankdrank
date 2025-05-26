@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anarchy.lol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 4rem;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #00ffff;
+            margin-bottom: 20px;
+        }
+
+        video {
+            width: 80%;
+            max-width: 800px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+        }
+
+        .discord {
+            margin-top: 20px; /* Space between video and Discord link */
+            font-size: 1.2rem;
+            color: #7289da;
+            text-decoration: none;
+            text-shadow: 0 0 5px #7289da;
+        }
+
+        .discord:hover {
+            text-shadow: 0 0 10px #7289da, 0 0 20px #fff;
+        }
+
+        .snowflake {
+            position: absolute;
+            color: #fff;
+            font-size: 1em;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .falling-text {
+            position: absolute;
+            color: #fff;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff;
+            pointer-events: none;
+            animation: fallText linear infinite;
+        }
+
+        @keyframes fallText {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">anarchy.lol</div>
+        <video controls>
+            <source src="r3gkau.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <a href="https://discord.gg/29aS9ywM" class="discord">  https://discord.gg/29aS9ywM</a>
+    </div>
+
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
+            snowflake.style.opacity = Math.random();
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000);
+        }
+
+        function createFallingText() {
+            const fallingText = document.createElement('div');
+            fallingText.className = 'falling-text';
+            fallingText.innerText = 'anarchy.lol';
+            fallingText.style.left = Math.random() * 100 + 'vw';
+            fallingText.style.animationDuration = Math.random() * 10 + 15 + 's';
+            fallingText.style.opacity = Math.random();
+            document.body.appendChild(fallingText);
+
+            setTimeout(() => {
+                fallingText.remove();
+            }, 25000);
+        }
+
+        setInterval(createSnowflake, 500);
+        setInterval(createFallingText, 3000);
+    </script>
+</body>
+</html>
